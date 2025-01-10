@@ -1,4 +1,5 @@
-#pragma once
+#ifndef _TYPES_H
+#define _TYPES_H
 
 typedef unsigned long uint32_t;
 typedef signed long int32_t;
@@ -21,3 +22,4 @@ typedef uint16_t uaddr_t;		/* User address */
 typedef uint16_t uptr_t;		/* Userspace pointer equivalent */
 
 #define MAXUSIZE	0xFFFF
+#endif

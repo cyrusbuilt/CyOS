@@ -26,7 +26,7 @@
     reti
     
     ;;
-    ;; Z80-MBC2 IM1 IRQ vector
+    ;; CyBorg IM1 IRQ vector
     ;;
     .org    0x38
     push    af

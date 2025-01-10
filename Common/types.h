@@ -20,6 +20,8 @@ typedef uint16_t usize_t;		/* Largest value passed by userspace */
 typedef int16_t susize_t;
 typedef uint16_t uaddr_t;		/* User address */
 typedef uint16_t uptr_t;		/* Userspace pointer equivalent */
+typedef uint32_t vaddr_t;
+#define NULL  ((void *) 0)
 
 #define MAXUSIZE	0xFFFF
 #endif

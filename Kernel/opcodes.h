@@ -1,4 +1,5 @@
-#pragma once
+#ifndef _OPCODES_H
+#define _OPCODES_H
 // These are taken directly from https://github.com/cyrusbuilt/CyBorg-Northbridge/blob/main/include/opcodes.h
 
 /**
@@ -419,3 +420,4 @@
 #define ERR_DSK_EMU_ILLEGAL_SCT_NUM 18
 #define ERR_DSK_EMU_UNEXPECTED_EOF 19
 
+#endif

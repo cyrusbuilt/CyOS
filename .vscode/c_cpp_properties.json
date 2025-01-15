@@ -5,7 +5,7 @@
             "includePath": [
                 "${default}",
                 "${workspaceFolder}/**",
-                "/opt/homebrew/Cellar/sdcc/4.4.0/share/sdcc/include"
+                "~/z88dk/include/**"
             ],
             "defines": [],
             "macFrameworkPath": [

@@ -1,10 +1,11 @@
 #ifndef _KERNEL_H
 #define _KERNEL_H
 
-#include <stdio.h>
+#include <stdlib.h>
+#include <z80.h>
 #include "Common/types.h"
-#include "Common/common.h"
 
+#define VERSION "0.1"
 #define PROCS_MAX 8
 #define PROC_UNUSED   0
 #define PROC_RUNNABLE 1
@@ -18,16 +19,9 @@ struct process {
     uint8_t stack[8192]; // kernel stack
 };
 
-// TODO Maybe move these to devio.h in common so it can be used by drivers, etc.
-// and keep only the kernel-specific stuff here.
-extern void out(uint_fast8_t port, uint_fast8_t val);
-extern void uint_fast8_t in(uint_fast8_t port);
-extern int putchar(int c);
-extern int getchar(void);
-
-#define PANIC(fmt, ...)                                                        \
-    do {                                                                       \
-        printf("PANIC: %s:%d: " fmt "\n", __FILE__, __LINE__, ##__VA_ARGS__);  \
-        while (1) {}                                                           \
+#define PANIC(fmt, ...)                                                      \
+    do {                                                                     \
+        printf("PANIC: %s:%d: " fmt "\n", __FILE__, __LINE__, __VA_ARGS__);  \
+        while (1) {}                                                         \
     } while (0)
 #endif

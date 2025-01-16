@@ -1,7 +1,7 @@
 {
     "configurations": [
         {
-            "name": "Mac",
+            "name": "z88dk",
             "includePath": [
                 "${default}",
                 "${workspaceFolder}/**",
@@ -9,9 +9,9 @@
             ],
             "defines": [],
             "macFrameworkPath": [
-                "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/System/Library/Frameworks"
+                "~/z88dk/include/**"
             ],
-            "compilerPath": "/opt/homebrew/bin/sdcc",
+            "compilerPath": "~/z88dk/bin/zcc",
             "cStandard": "c11",
             "cppStandard": "c++17",
             "intelliSenseMode": "gcc-arm64"

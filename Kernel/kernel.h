@@ -2,7 +2,6 @@
 #define _KERNEL_H
 
 #include <stdlib.h>
-#include <z80.h>
 #include "Common/types.h"
 
 #define VERSION "0.1"

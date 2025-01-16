@@ -1,6 +1,6 @@
 CC=zcc
 AS=zcc
-TARGET=+embedded
+TARGET=+z80
 VERBOSITY=-vn
 CRT=1
 
@@ -10,12 +10,12 @@ PRAGMA_FILE=zpragma.inc
 
 C_OPT_FLAGS=-SO3 --max-allocs-per-node200000
 
-CFLAGS=$(TARGET) $(VERBOSITY) -c $(C_OPT_FLAGS) -compiler sdcc -clib=sdcc_iy -pragma-include:$(PRAGMA_FILE)
-LDFLAGS=$(TARGET) $(VERBOSITY) -clib=sdcc_iy -pragma-include:$(PRAGMA_FILE)
+CFLAGS=$(TARGET) $(VERBOSITY) -c $(C_OPT_FLAGS) -compiler sdcc -clib=classic -pragma-include:$(PRAGMA_FILE)
+LDFLAGS=$(TARGET) $(VERBOSITY) -clib=classic -pragma-include:$(PRAGMA_FILE)
 ASFLAGS=$(TARGET) $(VERBOSITY) -c
 
 EXEC=kernel.bin
-EXEC_OUTPUT=kernel
+EXEC_OUTPUT=build/cyos
 
 OBJECTS=$(patsubst %.c,%.o, $(SOURCES))
 
@@ -28,10 +28,12 @@ OBJECTS=$(patsubst %.c,%.o, $(SOURCES))
 all : $(EXEC)
 
 $(EXEC) : $(OBJECTS)
+	mkdir build
 	$(CC) $(LDFLAGS) -startup=$(CRT) $(OBJECTS) -o $(EXEC_OUTPUT) -create-app
 
 .PHONY: clean
 
 clean:
+	rm -rf build
 	rm -rf Kernel/*.o
 	rm -rf Common/*.o

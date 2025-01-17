@@ -1,6 +1,6 @@
 #include <stdlib.h>
-#include "io.h"
-#include "Kernel/opcodes.h"
+#include <Common/io.h>
+#include <Kernel/opcodes.h>
 
 #define LF 0x0a
 #define CR 0x0d
@@ -38,7 +38,7 @@ int fputc_cons_native(char c) {
     return c;
 }
 
-int fgetc_cons(void) __naked {
+int fgetc_cons(void) {
     static char sysFlags;
     do {
         STORE_OPC_PORT = OP_IO_RD_SYSFLG;

@@ -4,7 +4,11 @@ TARGET=+z80
 VERBOSITY=-vn
 CRT=1
 
-SOURCES=Kernel/kernel.c Common/io.c
+DIRS=Common Kernel Kernel/Devices
+SEARCHC = $(addsuffix /*.c ,$(DIRS))
+SEARCHS = $(addsuffix /*.S ,$(DIRS))
+SOURCES = $(wildcard $(SEARCHC))
+SOURCES += $(wildcard $(SEARCHS))
 
 PRAGMA_FILE=zpragma.inc
 
@@ -25,6 +29,9 @@ OBJECTS=$(patsubst %.c,%.o, $(SOURCES))
 %.o: %.asm
 	$(AS) $(ASFLAGS) -o $@ $<
 
+init:
+	mkdir build
+
 all : $(EXEC)
 
 $(EXEC) : $(OBJECTS)
@@ -35,5 +42,4 @@ $(EXEC) : $(OBJECTS)
 
 clean:
 	rm -rf build
-	rm -rf Kernel/*.o
-	rm -rf Common/*.o
+	rm -rf $(OBJECTS)

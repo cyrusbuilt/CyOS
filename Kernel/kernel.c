@@ -1,7 +1,7 @@
 #include <stdio.h>
-#include "kernel.h"
-#include "opcodes.h"
-#include "Common/io.h"
+#include <Kernel/kernel.h>
+#include <Kernel/opcodes.h>
+#include <Common/io.h>
 
 /**
  * Kernel bootstrap routine.

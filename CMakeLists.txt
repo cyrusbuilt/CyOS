@@ -11,12 +11,37 @@ set(CMAKE_C_FLAGS "-std-c11")
 # set(CMAKE_VERBOSE_MAKEFILE 1)
 
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ../output)
+set(HEADERS Kernel/kernel.h Kernel/Devices/spp.h Common/io.h)
 
-set(SOURCE_FILES Kernel/kernel.c Common/io.c)
+include_directories(.)
+include_directories(Kernel)
+include_directories(Kernel/Devices)
+include_directories(Common)
+include_directories(${CMAKE_CURRENT_BINARY_DIR})
+
+# add_subdirectory(Common)
+# add_subdirectory(Kernel)
+
+set(SOURCE_FILES
+        Kernel/kernel.c
+        Kernel/Devices/bsp.c
+        Kernel/Devices/spp.c
+        Common/io.c
+)
 
 add_executable(${PROJECT_NAME} ${SOURCE_FILES})
 target_compile_options(${PROJECT_NAME} PRIVATE -I$ENV{Z88DK_HOME}/include -Isrc/ -vn -m)
 target_link_options(${PROJECT_NAME} PRIVATE -m -create-app -subtype=default)
+
+add_custom_target(make-all
+        COMMAND "make all"
+        USES_TERMINAL
+)
+
+add_custom_target(make-clean
+        COMMAND "make clean"
+        USES_TERMINAL
+)
 
 # Fixes the k7 format for old z88dk versions.
 set(INPUT_FOR_FIX ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/${PROJECT_NAME}.k7)

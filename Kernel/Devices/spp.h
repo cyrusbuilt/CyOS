@@ -1,3 +1,9 @@
+/**
+* SPP: Driver for the Standard Parallel Port add-on card (CyBorgSPP).
+* Provides driver functions for interfacing with the SPP functionality
+* exposed by the firmware.
+* NOTE: These are ignored if the board is not present.
+*/
 #ifndef _SPP_H_
 #define _SPP_H_
 

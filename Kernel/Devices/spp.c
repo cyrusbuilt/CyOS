@@ -1,3 +1,4 @@
+#include <stdio.h>
 #include <Kernel/Devices/spp.h>
 #include <Kernel/opcodes.h>
 #include <Common/io.h>
@@ -5,8 +6,10 @@
 struct spp_status_t spp_status;
 
 void spp_init(bool enableAutoFeed) {
+    printf("spp_init(): Initializing parallel port ...");
     STORE_OPC_PORT = OP_SPP_WR_INIT;
     EXEC_PORT = (char)(enableAutoFeed);
+    printf("OK\n");
 }
 
 void spp_write(uint8_t data) {

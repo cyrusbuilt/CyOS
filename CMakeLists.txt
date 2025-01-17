@@ -25,6 +25,7 @@ include_directories(${CMAKE_CURRENT_BINARY_DIR})
 set(SOURCE_FILES
         Kernel/kernel.c
         Kernel/Devices/bsp.c
+        Kernel/Devices/memory.c
         Kernel/Devices/spp.c
         Common/io.c
 )

@@ -43,3 +43,4 @@ $(EXEC) : $(OBJECTS)
 clean:
 	rm -rf build
 	rm -rf $(OBJECTS)
+	rm -rf kernel.map

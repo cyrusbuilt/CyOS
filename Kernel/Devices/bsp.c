@@ -26,3 +26,17 @@ bool bsp_user_key_pressed(void) {
     STORE_OPC_PORT = OP_IO_RD_USRKEY;
     return EXEC_PORT;
 }
+
+void bsp_user_led_write(enum user_led_t state) {
+    STORE_OPC_PORT = OP_IO_WR_USR_LED;
+    EXEC_PORT = (char)(state);
+}
+
+uint8_t bsp_serial_tx_buffer_free(void) {
+    STORE_OPC_PORT = OP_IO_RD_ATXBUFF;
+    return EXEC_PORT;
+}
+
+void bsp_nop(void) {
+    STORE_OPC_PORT = OP_IO_NOP;
+}

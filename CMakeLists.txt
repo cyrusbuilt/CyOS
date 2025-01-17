@@ -19,12 +19,10 @@ include_directories(Kernel/Devices)
 include_directories(Common)
 include_directories(${CMAKE_CURRENT_BINARY_DIR})
 
-# add_subdirectory(Common)
-# add_subdirectory(Kernel)
-
 set(SOURCE_FILES
         Kernel/kernel.c
         Kernel/Devices/bsp.c
+        Kernel/Devices/ioex.c
         Kernel/Devices/memory.c
         Kernel/Devices/spp.c
         Common/io.c

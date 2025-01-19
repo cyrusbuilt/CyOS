@@ -17,6 +17,7 @@ set(HEADERS
         Kernel/Devices/diskio.h
         Kernel/Devices/ioex.h
         Kernel/Devices/memory.h
+        Kernel/Devices/rtc.h
         Kernel/Devices/spp.h
         Common/io.h
 )
@@ -33,6 +34,7 @@ set(SOURCE_FILES
         Kernel/Devices/diskio.c
         Kernel/Devices/ioex.c
         Kernel/Devices/memory.c
+        Kernel/Devices/rtc.c
         Kernel/Devices/spp.c
         Common/io.c
 )

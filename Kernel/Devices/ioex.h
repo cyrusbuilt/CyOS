@@ -21,5 +21,5 @@ enum ioex_mode_t {
 void ioex_write(enum ioex_port_t port, uint8_t data);
 void ioex_set_mode(enum ioex_port_t port, enum ioex_mode_t mode);
 void ioex_set_pullup(enum ioex_port_t port, bool pullup);
-
+uint8_t ioex_read(enum ioex_port_t port);
 #endif

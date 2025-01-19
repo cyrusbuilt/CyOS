@@ -11,7 +11,15 @@ set(CMAKE_C_FLAGS "-std-c11")
 # set(CMAKE_VERBOSE_MAKEFILE 1)
 
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ../output)
-set(HEADERS Kernel/kernel.h Kernel/Devices/spp.h Common/io.h)
+set(HEADERS
+        Kernel/kernel.h
+        Kernel/Devices/bsp.h
+        Kernel/Devices/diskio.h
+        Kernel/Devices/ioex.h
+        Kernel/Devices/memory.h
+        Kernel/Devices/spp.h
+        Common/io.h
+)
 
 include_directories(.)
 include_directories(Kernel)
@@ -22,6 +30,7 @@ include_directories(${CMAKE_CURRENT_BINARY_DIR})
 set(SOURCE_FILES
         Kernel/kernel.c
         Kernel/Devices/bsp.c
+        Kernel/Devices/diskio.c
         Kernel/Devices/ioex.c
         Kernel/Devices/memory.c
         Kernel/Devices/spp.c

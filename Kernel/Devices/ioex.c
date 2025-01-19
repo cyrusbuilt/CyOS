@@ -36,3 +36,13 @@ void ioex_set_pullup(enum ioex_port_t port, bool pullup) {
 
     EXEC_PORT = (char)(pullup);
 }
+
+uint8_t ioex_read(enum ioex_port_t port) {
+    if (port == ioex_port_a) {
+        STORE_OPC_PORT = OP_IO_RD_GPIOA;
+    } else {
+        STORE_OPC_PORT = OP_IO_RD_GPIOB;
+    }
+
+    return EXEC_PORT;
+}

@@ -20,6 +20,6 @@ struct spp_status_t {
 
 void spp_init(bool enableAutoFeed);
 void spp_write(uint8_t data);
-struct spp_status_t *spp_read(void);
+struct spp_status_t spp_read(void);
 
 #endif

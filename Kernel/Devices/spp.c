@@ -3,8 +3,6 @@
 #include <Kernel/opcodes.h>
 #include <Common/io.h>
 
-struct spp_status_t spp_status;
-
 void spp_init(bool enableAutoFeed) {
     printf("spp_init(): Initializing parallel port ...");
     STORE_OPC_PORT = OP_SPP_WR_INIT;
@@ -17,14 +15,14 @@ void spp_write(uint8_t data) {
     EXEC_PORT = data;
 }
 
-struct spp_status_t *spp_read(void) {
+struct spp_status_t spp_read(void) {
     STORE_OPC_PORT = OP_SPP_RD_READ;
     uint8_t stat = EXEC_PORT;
-    struct spp_status_t *status = &spp_status;
-    status->ack = (stat & 0x01);
-    status->busy = (stat & 0x02);
-    status->paperOut = (stat & 0x03);
-    status->select = (stat & 0x04);
-    status->error = (stat & 0x05);
+    struct spp_status_t status;
+    status.ack = (stat >> 0) & 1;
+    status.busy = (stat >> 1) & 1;
+    status.paperOut = (stat >> 2) & 1;
+    status.select = (stat >> 3) & 1;
+    status.error = (stat >> 4) & 1;
     return status;
 }

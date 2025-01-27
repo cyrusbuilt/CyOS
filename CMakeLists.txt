@@ -20,12 +20,15 @@ set(HEADERS
         Kernel/Devices/rtc.h
         Kernel/Devices/spp.h
         Common/io.h
+        CLI/cli.h
+        CLI/impl.h
 )
 
 include_directories(.)
 include_directories(Kernel)
 include_directories(Kernel/Devices)
 include_directories(Common)
+include_directories(CLI)
 include_directories(${CMAKE_CURRENT_BINARY_DIR})
 
 set(SOURCE_FILES
@@ -37,6 +40,7 @@ set(SOURCE_FILES
         Kernel/Devices/rtc.c
         Kernel/Devices/spp.c
         Common/io.c
+        CLI/cli.c
 )
 
 add_executable(${PROJECT_NAME} ${SOURCE_FILES})

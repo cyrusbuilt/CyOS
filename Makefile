@@ -4,7 +4,7 @@ TARGET=+z80
 VERBOSITY=-vn
 CRT=1
 
-DIRS=CLI Common Kernel Kernel/Devices
+DIRS=CLI Common Kernel Kernel/Devices Kernel/FS Util
 SEARCHC = $(addsuffix /*.c ,$(DIRS))
 SEARCHS = $(addsuffix /*.S ,$(DIRS))
 SOURCES = $(wildcard $(SEARCHC))
@@ -44,3 +44,5 @@ clean:
 	rm -rf build
 	rm -rf $(OBJECTS)
 	rm -rf kernel.map
+	rm -rf output
+	rm -rf cmake-build-debug

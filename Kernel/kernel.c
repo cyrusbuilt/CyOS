@@ -32,7 +32,7 @@ void kernel_main(void) {
 }
 
 /**
- * Kernel entry point.
+ * Kernel entry point. This gets called from crt0.
  */
 int main(void) {
     printf(cyos_banner);

@@ -19,16 +19,22 @@ set(HEADERS
         Kernel/Devices/memory.h
         Kernel/Devices/rtc.h
         Kernel/Devices/spp.h
+        Kernel/FS/diskio.h
+        Kernel/FS/ffconf.h
+        Kernel/FS/ff.h
         Common/io.h
         CLI/cli.h
         CLI/impl.h
+        Util/ffwrap.h
 )
 
 include_directories(.)
 include_directories(Kernel)
 include_directories(Kernel/Devices)
+include_directories(Kernel/FS)
 include_directories(Common)
 include_directories(CLI)
+include_directories(Util)
 include_directories(${CMAKE_CURRENT_BINARY_DIR})
 
 set(SOURCE_FILES
@@ -39,8 +45,11 @@ set(SOURCE_FILES
         Kernel/Devices/memory.c
         Kernel/Devices/rtc.c
         Kernel/Devices/spp.c
+        Kernel/FS/diskio.c
         Common/io.c
         CLI/cli.c
+        CLI/term.c
+        Util/ffwrap.c
 )
 
 add_executable(${PROJECT_NAME} ${SOURCE_FILES})

@@ -1,7 +1,10 @@
 #include <stdio.h>
 #include <string.h>
+#include <ctype.h>
 #include <CLI/cli.h>
 #include <CLI/impl.h>
+
+#define pgm_read_ptr(p) (*(p))
 
 typedef struct {
    int ord;
@@ -12,9 +15,13 @@ typedef struct {
 } cli_command_t;
 
 const char cli_commands[] =
-//  Name        Args         Description
-   "about\0"    "\0"         "CyOS copyrights and licenses\0"
-   "help\0"     "\0"         "list available commands\0";
+//  Name         Args                  Description
+   "about\0"     "\0"                  "CyOS copyrights and licenses\0"
+   "ascii\0"     "<char>\0"            "\0"
+   "cls\0"       "\0"                  "clear screen\0"
+   "esc\0"       "<codes>+\0"          "\0"
+   "help\0"      "\0"                  "list available commands\0"
+   "screen\0"   "[width] [height]\0"   "set screen size\0";
 
 void cli_about(int argc, char *argv[]) {
     printf("%S\n%S\n", cyos_banner, cyos_copyright);
@@ -70,8 +77,39 @@ void cli_help(int argc, char *argv[]) {
     }
 }
 
-void cli_dispatch(char *buf) {
+void* const cli_functions[] = {
+    &cli_about,
+    &cli_ascii,
+    &cli_cls,
+    &cli_esc,
+    &cli_help,
+    &cli_screen
+};
 
+void cli_dispatch(char *buf) {
+    char* argv[MAXARGS];
+    int argc;
+    for (int i = 0; i < strlen(buf); i++) {
+        buf[i] = tolower(buf[i]);
+    }
+
+    if ((argv[0] = strtok(buf, WHITESPACE)) == NULL) {
+        return;  // empty command
+    }
+
+    cli_command_t cmd;
+    cmd = cli_find_command(cli_commands, argv[0]);
+    if (cmd.name != NULL) {
+        void (*cmd_func)(int, char*[]);
+        cmd_func = pgm_read_ptr(&cli_functions[cmd.ord]);
+        for (argc = 1; argc < MAXARGS; argc++) {
+            if ((argv[argc] = strtok(NULL, WHITESPACE)) == NULL) {
+                break;
+            }
+        }
+
+        cmd_func(argc, argv);
+    }  // TODO need an 'else if' scenario here eventually to fall back to executing .COM and .PRG files.
 }
 
 void cli_loop(void) {

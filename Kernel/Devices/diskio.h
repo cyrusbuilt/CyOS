@@ -3,6 +3,9 @@
 
 #include <stdint.h>
 
+#define MAX_TRACKS 512
+#define MAX_SECTORS 32
+
 enum disk_error_t {
     disk_error_ok = 0,
     disk_error_disk_err = 1,

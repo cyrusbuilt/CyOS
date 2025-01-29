@@ -21,6 +21,7 @@ const char cli_commands[] =
    "cls\0"       "\0"                  "clear screen\0"
    "esc\0"       "<codes>+\0"          "send escape sequences\0"
    "help\0"      "\0"                  "list available commands\0"
+   "lprint\0"    "<string>\0"          "send string to standard parallel port\0"
    "screen\0"    "[width] [height]\0"  "set screen size\0"
    "time\0"      "\0"                  "print the current date and time\0";
 
@@ -84,6 +85,7 @@ void* const cli_functions[] = {
     &cli_cls,
     &cli_esc,
     &cli_help,
+    &cli_lprint,
     &cli_screen,
     &cli_time
 };

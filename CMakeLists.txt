@@ -48,6 +48,7 @@ set(SOURCE_FILES
         Kernel/FS/diskio.c
         Common/io.c
         CLI/cli.c
+        CLI/lpr.c
         CLI/term.c
         CLI/time.c
         Util/ffwrap.c

@@ -3,6 +3,8 @@
 
 #include <stdint.h>
 
+#define CENTURY_PREFIX 20
+
 struct rtc_time {
     uint8_t seconds;
     uint8_t minutes;

@@ -22,4 +22,7 @@ void cli_cls(int argc, char* argv[]);
 void cli_esc(int argc, char* argv[]);
 void cli_ascii(int argc, char* argv[]);
 
+/* time.c */
+void cli_time(int argc, char* argv[]);
+
 #endif

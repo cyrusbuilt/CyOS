@@ -49,6 +49,7 @@ set(SOURCE_FILES
         Common/io.c
         CLI/cli.c
         CLI/term.c
+        CLI/time.c
         Util/ffwrap.c
 )
 

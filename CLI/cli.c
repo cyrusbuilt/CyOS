@@ -17,11 +17,12 @@ typedef struct {
 const char cli_commands[] =
 //  Name         Args                  Description
    "about\0"     "\0"                  "CyOS copyrights and licenses\0"
-   "ascii\0"     "<char>\0"            "\0"
+   "ascii\0"     "<char>\0"            "send ascii character\0"
    "cls\0"       "\0"                  "clear screen\0"
-   "esc\0"       "<codes>+\0"          "\0"
+   "esc\0"       "<codes>+\0"          "send escape sequences\0"
    "help\0"      "\0"                  "list available commands\0"
-   "screen\0"   "[width] [height]\0"   "set screen size\0";
+   "screen\0"    "[width] [height]\0"  "set screen size\0"
+   "time\0"      "\0"                  "print the current date and time\0";
 
 void cli_about(int argc, char *argv[]) {
     printf("%S\n%S\n", cyos_banner, cyos_copyright);
@@ -83,7 +84,8 @@ void* const cli_functions[] = {
     &cli_cls,
     &cli_esc,
     &cli_help,
-    &cli_screen
+    &cli_screen,
+    &cli_time
 };
 
 void cli_dispatch(char *buf) {

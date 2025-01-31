@@ -4,7 +4,7 @@ TARGET=+z80
 VERBOSITY=-vn
 CRT=1
 
-DIRS=CLI Common Kernel Kernel/Devices Kernel/FS Util
+DIRS=Common Kernel Kernel/Devices Kernel/FS Util CLI
 SEARCHC = $(addsuffix /*.c ,$(DIRS))
 SEARCHS = $(addsuffix /*.S ,$(DIRS))
 SOURCES = $(wildcard $(SEARCHC))

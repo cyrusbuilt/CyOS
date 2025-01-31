@@ -1,3 +1,4 @@
+#include <stdio.h>
 #include <stdlib.h>
 #include <Common/io.h>
 #include <Kernel/opcodes.h>
@@ -5,19 +6,6 @@
 #define LF 0x0a
 #define CR 0x0d
 #define SER_BUF_EMPTY_BIT 0x04
-
-// SDCC exporting fudge to handle the double export of library functions
-#ifdef __SDCC
-static void fudge_export(void)
-{
-__asm
-        PUBLIC fputc_cons_native
-        PUBLIC _fputc_cons_native
-        defc fputc_cons_native = _fputc_cons_native
-        defc fgetc_cons = _fgetc_cons
-__endasm;
-}
-#endif
 
 void k_outp(unsigned int port, unsigned int val) {
     outp(port, val);
@@ -46,3 +34,16 @@ int fgetc_cons(void) {
     } while (!(sysFlags & SER_BUF_EMPTY_BIT));
     return SER_RX_PORT;
 }
+
+// SDCC exporting fudge to handle the double export of library functions
+#ifdef __SDCC
+static void fudge_export(void)
+{
+__asm
+        PUBLIC fputc_cons_native
+        PUBLIC _fputc_cons_native
+        defc fputc_cons_native = _fputc_cons_native
+        defc fgetc_cons = _fgetc_cons
+__endasm;
+}
+#endif

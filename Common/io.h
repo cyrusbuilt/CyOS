@@ -3,6 +3,7 @@
 
 #include <sys/compiler.h>
 #include <stdio.h>
+#include <stdlib.h>
 
 __sfr __at 0x00 EXEC_PORT;
 __sfr __at 0x01 STORE_OPC_PORT;

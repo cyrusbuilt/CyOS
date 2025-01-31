@@ -17,8 +17,10 @@ set(HEADERS
         Kernel/Devices/diskio.h
         Kernel/Devices/ioex.h
         Kernel/Devices/memory.h
+        Kernel/Devices/mouse.h
         Kernel/Devices/rtc.h
         Kernel/Devices/spp.h
+        Kernel/Devices/term.h
         Kernel/FS/diskio.h
         Kernel/FS/ffconf.h
         Kernel/FS/ff.h
@@ -26,6 +28,7 @@ set(HEADERS
         CLI/cli.h
         CLI/impl.h
         Util/ffwrap.h
+        Util/stringutil.h
 )
 
 include_directories(.)
@@ -43,8 +46,10 @@ set(SOURCE_FILES
         Kernel/Devices/diskio.c
         Kernel/Devices/ioex.c
         Kernel/Devices/memory.c
+        Kernel/Devices/mouse.c
         Kernel/Devices/rtc.c
         Kernel/Devices/spp.c
+        Kernel/Devices/term.c
         Kernel/FS/diskio.c
         Common/io.c
         CLI/cli.c
@@ -52,6 +57,7 @@ set(SOURCE_FILES
         CLI/term.c
         CLI/time.c
         Util/ffwrap.c
+        Util/stringutil.c
 )
 
 add_executable(${PROJECT_NAME} ${SOURCE_FILES})

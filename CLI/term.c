@@ -1,6 +1,8 @@
 #include <stdio.h>
 #include <stdint.h>
 #include <stdlib.h>
+#include <string.h>
+#include <Kernel/Devices/term.h>
 
 uint8_t screenwidth = 80;
 uint8_t screenheight = 24;
@@ -29,7 +31,7 @@ void cli_screen(int argc, char* argv[]) {
 }
 
 void cli_cls(int argc, char* argv[]) {
-    printf("\e[0m\e[;H\e[2J");
+    printf("\e_B$");
 }
 
 void cli_esc(int argc, char* argv[]) {
@@ -51,4 +53,20 @@ void cli_ascii(int argc, char* argv[]) {
         char c = strtoul(argv[i], NULL, 16);
         printf("%c", c);
     }
+}
+
+void cli_cursor_toggle(int argc, char* argv[]) {
+    if (argc < 2) {
+        printf("usage: %s <on | off>...\n", argv[0]);
+        return;
+    }
+
+    if (strstr(argv[1], "on") != NULL) {
+        term_cursor_on();
+    } else if (strstr(argv[1], "off") != NULL) {
+        term_cursor_off();
+    }
+
+    printf("usage: %s <on | off>...\n", argv[0]);
+    return;
 }

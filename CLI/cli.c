@@ -19,6 +19,7 @@ const char cli_commands[] =
    "about\0"     "\0"                  "CyOS copyrights and licenses\0"
    "ascii\0"     "<char>\0"            "send ascii character\0"
    "cls\0"       "\0"                  "clear screen\0"
+   "cursor\0"    "<on | off>\0"        "toggle cursor on or off\0"
    "esc\0"       "<codes>+\0"          "send escape sequences\0"
    "help\0"      "\0"                  "list available commands\0"
    "lprint\0"    "<string>\0"          "send string to standard parallel port\0"
@@ -83,6 +84,7 @@ void* const cli_functions[] = {
     &cli_about,
     &cli_ascii,
     &cli_cls,
+    &cli_cursor_toggle,
     &cli_esc,
     &cli_help,
     &cli_lprint,

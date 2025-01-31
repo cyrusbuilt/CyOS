@@ -26,7 +26,7 @@ struct mouse_pos_t get_mouse_pos(void) {
             result[i] = strtok(i == 0 ? buf : NULL, ";");
         }
 
-        pos.x = atoi(result[0]);
+        pos.x = atoi(result[0]++);
         pos.y = atoi(result[1]);
         pos.wheel = atoi(result[2]);
 

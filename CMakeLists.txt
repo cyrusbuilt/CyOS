@@ -15,10 +15,12 @@ set(HEADERS
         Kernel/kernel.h
         Kernel/Devices/bsp.h
         Kernel/Devices/diskio.h
+        Kernel/Devices/graphics.h
         Kernel/Devices/ioex.h
         Kernel/Devices/memory.h
         Kernel/Devices/mouse.h
         Kernel/Devices/rtc.h
+        Kernel/Devices/sound.h
         Kernel/Devices/spp.h
         Kernel/Devices/term.h
         Kernel/FS/diskio.h
@@ -44,10 +46,12 @@ set(SOURCE_FILES
         Kernel/kernel.c
         Kernel/Devices/bsp.c
         Kernel/Devices/diskio.c
+        Kernel/Devices/graphics.c
         Kernel/Devices/ioex.c
         Kernel/Devices/memory.c
         Kernel/Devices/mouse.c
         Kernel/Devices/rtc.c
+        Kernel/Devices/sound.c
         Kernel/Devices/spp.c
         Kernel/Devices/term.c
         Kernel/FS/diskio.c

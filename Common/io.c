@@ -42,6 +42,8 @@ static void fudge_export(void)
 __asm
         PUBLIC fputc_cons_native
         PUBLIC _fputc_cons_native
+        PUBLIC fgetc_cons
+        PUBLIC _fgetc_cons
         defc fputc_cons_native = _fputc_cons_native
         defc fgetc_cons = _fgetc_cons
 __endasm;

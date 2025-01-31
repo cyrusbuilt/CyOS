@@ -12,3 +12,7 @@ void term_cursor_off(void) {
 void term_set_cursor_pos(int x, int y) {
     printf("\e_F%d;%d$", x, y);
 }
+
+void term_delay(int ms) {
+    printf("\e_Y%d$", ms);
+}
